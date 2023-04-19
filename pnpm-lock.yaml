@@ -1,24 +1,28 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/node': ^18.15.11
   '@types/react': ^18.0.28
   '@types/react-dom': ^18.0.11
   '@vitejs/plugin-react': ^3.1.0
+  julian-date: ^1.0.1
   react: ^18.2.0
   react-dom: ^18.2.0
   typescript: ^4.9.3
   vite: ^4.2.0
 
 dependencies:
+  julian-date: 1.0.1
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
 
 devDependencies:
+  '@types/node': 18.15.11
   '@types/react': 18.0.37
   '@types/react-dom': 18.0.11
   '@vitejs/plugin-react': 3.1.0_vite@4.2.2
   typescript: 4.9.5
-  vite: 4.2.2
+  vite: 4.2.2_@types+node@18.15.11
 
 packages:
 
@@ -482,6 +486,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@types/node/18.15.11:
+    resolution: {integrity: sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==}
+    dev: true
+
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
@@ -515,7 +523,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6_@babel+core@7.21.4
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.2.2
+      vite: 4.2.2_@types+node@18.15.11
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -680,6 +688,10 @@ packages:
     hasBin: true
     dev: true
 
+  /julian-date/1.0.1:
+    resolution: {integrity: sha512-E9uCNWWo0Wldnif2+goA4d5J5QocGtyaWfwcPjikUSQUVUyQOR5txImt2lUFb2kx+NdajSIuha5tv4+Wyr4XdQ==}
+    dev: false
+
   /loose-envify/1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
@@ -820,7 +832,7 @@ packages:
       picocolors: 1.0.0
     dev: true
 
-  /vite/4.2.2:
+  /vite/4.2.2_@types+node@18.15.11:
     resolution: {integrity: sha512-PcNtT5HeDxb3QaSqFYkEum8f5sCVe0R3WK20qxgIvNBZPXU/Obxs/+ubBMeE7nLWeCo2LDzv+8hRYSlcaSehig==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -845,6 +857,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 18.15.11
       esbuild: 0.17.17
       postcss: 8.4.22
       resolve: 1.22.2

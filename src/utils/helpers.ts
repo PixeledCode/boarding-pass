@@ -1,3 +1,6 @@
+// @ts-ignore
+import JulianDate from 'julian-date'
+
 export async function checkIfFormatIsSupported(format: string[]) {
 	return await window.BarcodeDetector.getSupportedFormats().then(
 		(supportedFormats: string | string[]) => {
@@ -16,21 +19,32 @@ export const parseBarcode = (barcode: string) => {
 	obj.firstName = name[1]
 	obj.lastName = name[0]
 
-	// Get the PNR number
+	// User Details
 	obj.pnr = splitStr[1]
+	obj.seat = splitStr[4].slice(4, 8).replace(/^0+/, '')
+	obj.squence = splitStr[4].slice(8, 13)
+	obj.cabin = splitStr[4].slice(3, 4)
+	obj.date = convertJulianDate(parseInt(splitStr[4].slice(0, 3)))
+
 	// Get the carrier details
-	obj.carrierFs = splitStr[2].slice(6, 8)
-	obj.carrierFlightId = parseInt(splitStr[3])
+	obj.flightCode = splitStr[2].slice(6, 8) + parseInt(splitStr[3])
 
 	return obj
 }
 
-export const fetchFlightDetails = async (
-	carrierFs: string,
-	carrierFlightId: number
-) => {
-	const url = `https://www.flightstats.com/v2/api-next/flick/1175834758?guid=34b64945a69b9cac:5ae30721:13ca699d305:XXXX&airline=${carrierFs}&flight=${carrierFlightId}&flightPlan=true&rqid=x1nkfxn99i8`
+export const fetchFlightDetails = async (flightCode: string) => {
+	const url = `https://airlabs.co/api/v9/flight?flight_iata=${flightCode}&api_key=${
+		import.meta.env.VITE_AIR_API
+	}`
 	const response = await fetch(url)
 	const data = await response.json()
 	return data
+}
+
+function convertJulianDate(julian: number) {
+	let timeStamp = new Date().setFullYear(new Date().getFullYear(), 0, 1)
+	let yearFirstDay = Math.floor(timeStamp / 86400000)
+	let date = (yearFirstDay + (julian - 1)) * 86400000
+
+	return new Date(date).toDateString()
 }

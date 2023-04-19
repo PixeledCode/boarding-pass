@@ -27,21 +27,20 @@ export const FileReader = ({ formats }: FileReaderProps) => {
 		}
 	}, [file])
 
-	React.useEffect(() => {
-		if (value) {
-			fetchFlightDetails(value.carrierFs, value.carrierFlightId).then((res) => {
-				console.log(res)
-			})
-		}
-	}, [value])
+	// React.useEffect(() => {
+	// 	if (value) {
+	// 		fetchFlightDetails(value.flightCode).then((res) => {
+	// 			console.log(res)
+	// 		})
+	// 	}
+	// }, [value])
 
 	return (
 		<>
 			<input
 				type="file"
-				id="avatar"
-				name="avatar"
-				accept="image/png, image/jpeg"
+				name="boaridng-pass"
+				accept="image/png, image/jpeg, image/jpg"
 				onChange={(e: any) => {
 					setFile(e.target.files[0])
 				}}
