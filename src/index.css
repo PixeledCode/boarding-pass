@@ -1,69 +1,69 @@
 :root {
-	font-family: Rubik, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 1.5;
-	font-weight: 400;
+  font-family: Rubik, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
 
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-text-size-adjust: 100%;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
 
-	background: hsla(213, 77%, 14%, 1);
-	background: linear-gradient(
-		90deg,
-		hsla(213, 77%, 14%, 1) 0%,
-		hsla(202, 27%, 45%, 1) 100%
-	);
-	background: -moz-linear-gradient(
-		90deg,
-		hsla(213, 77%, 14%, 1) 0%,
-		hsla(202, 27%, 45%, 1) 100%
-	);
-	background: -webkit-linear-gradient(
-		90deg,
-		hsla(213, 77%, 14%, 1) 0%,
-		hsla(202, 27%, 45%, 1) 100%
-	);
-	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#08203E", endColorstr="#557C93", GradientType=1 );
+  background: hsla(213, 77%, 14%, 1);
+  background: linear-gradient(
+    90deg,
+    hsla(213, 77%, 14%, 1) 0%,
+    hsla(202, 27%, 45%, 1) 100%
+  );
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(213, 77%, 14%, 1) 0%,
+    hsla(202, 27%, 45%, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(213, 77%, 14%, 1) 0%,
+    hsla(202, 27%, 45%, 1) 100%
+  );
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#08203E", endColorstr="#557C93", GradientType=1 );
 }
 
 a {
-	font-weight: 500;
-	color: #646cff;
-	text-decoration: inherit;
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
 }
 a:hover {
-	color: #747bff;
+  color: #747bff;
 }
 
 body,
 html {
-	margin: 0;
-	height: 100%;
+  margin: 0;
+  height: 100%;
 }
 
 h1 {
-	font-size: 1.5rem;
-	line-height: 1.1;
-	font-weight: 400;
-	margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  font-weight: 400;
+  margin: 0;
 }
 
 button {
-	all: unset;
-	padding: 4px;
-	font-family: inherit;
-	cursor: pointer;
-	transition: border-color 0.25s;
+  all: unset;
+  padding: 4px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
 
 .sr-only:not(:where(:focus, :active, :focus-within)) {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
