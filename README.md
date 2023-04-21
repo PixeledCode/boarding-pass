@@ -13,7 +13,7 @@ To get started with this application, you will need to follow these steps:
 
 ## Usage
 
-The application allows users to generate a new boarding pass by entering their flight information. Once entered, the boarding pass will be generated and displayed on the screen.
+The application allows passengers to use their pdf or image of the boarding pass and save the details in a more accessible manner.
 
 ## Features
 

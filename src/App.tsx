@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import './App.css'
-import reactLogo from './assets/react.svg'
-import { FileReader } from './components'
+import { Card, FileReader } from './components'
 import { checkIfFormatIsSupported } from './utils/helpers'
 
 const formats = ['aztec', 'data_matrix', 'pdf417']
 
 function App() {
 	const [supported, setSupported] = useState(false)
+	const [value, setValue] = React.useState<any>()
+	const [image, setImage] = React.useState<any>()
 
 	React.useEffect(() => {
 		if ('BarcodeDetector' in window) {
@@ -19,17 +20,22 @@ function App() {
 		}
 		setSupported(false)
 	}, [])
+	console.log(supported)
 
 	return (
 		<div className="App">
-			<div>
-				<a href="https://reactjs.org" target="_blank">
-					<img src={reactLogo} className="logo react" alt="React logo" />
-				</a>
-			</div>
-			<h1>Boarding Pass</h1>
-			<p>Barcode Detector is {supported ? 'Supported' : ' Not Supported'}</p>
-			{supported && <FileReader formats={formats} />}
+			<header className="header">
+				<h1>Boarding Pass</h1>
+				{supported && (
+					<FileReader
+						onValueChange={setValue}
+						setImage={setImage}
+						formats={formats}
+					/>
+				)}
+			</header>
+
+			{<Card value={value} image={image} />}
 		</div>
 	)
 }
