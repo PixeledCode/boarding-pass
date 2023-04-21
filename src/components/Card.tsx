@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from './Card.module.scss'
+import { getAirlineName, getAirport, getCodeVal } from '../utils/fetch'
+import { IoIosAirplane } from 'react-icons/io'
 
 interface CardProps {
 	value: any
@@ -7,36 +9,34 @@ interface CardProps {
 
 export const Card = ({ value }: CardProps) => {
 	const [code, setCode] = React.useState<any>()
-
-	async function fetchCode(rawValue: string) {
-		const symbologyURL = `https://bwipjs-api.metafloor.com/?bcid=azteccode&text=${rawValue}&scale=4`
-		await fetch(symbologyURL)
-			.then((res) => res.blob())
-			.then((myBlob) => {
-				const objectURL = URL.createObjectURL(myBlob)
-				setCode(objectURL)
-			})
-	}
+	const [dep, setDep] = React.useState<any>('Departure')
+	const [arr, setArr] = React.useState<any>('Arrival')
+	const [airline, setAirline] = React.useState<any>('Airline')
 
 	React.useEffect(() => {
 		if (value) {
-			fetchCode(value?.rawValue)
+			getCodeVal(value.rawValue).then((res) => setCode(res))
+			getAirport(value.departure).then((res) => setDep(res))
+			getAirport(value.arrival).then((res) => setArr(res))
+			getAirlineName(value.iata).then((res) => setAirline(res))
 		}
 	}, [value])
 
 	const name = value ? `${value.firstName} ${value.lastName}` : ''
 
 	return (
-		<div className={styles.Card}>
+		<article className={styles.Card}>
+			<div className={styles.Cut}></div>
 			{value && (
 				<>
-					<div className={styles.Header}>
-						<h2>Indigo</h2>
+					<header className={styles.Header}>
+						<h2>{airline.name || 'Airline'}</h2>
 						<Box heading="Seat" value={value.seat} />
-					</div>
+					</header>
 					<div className={styles.Primary}>
-						<span>{value.departure}</span>
-						<span>{value.arrival}</span>
+						<Box heading={dep} value={value.departure} />
+						<IoIosAirplane size={48} />
+						<Box heading={arr} value={value.arrival} />
 					</div>
 					<div className={styles.Auxiliary}>
 						<Box heading="Flight" value={value.flightCode} />
@@ -53,7 +53,7 @@ export const Card = ({ value }: CardProps) => {
 					</div>
 				</>
 			)}
-		</div>
+		</article>
 	)
 }
 
@@ -61,7 +61,7 @@ const Box = ({ heading, value }: { heading: string; value: string }) => {
 	return (
 		<div className={styles.Box}>
 			<span>{heading}</span>
-			<span>{value}</span>
+			<strong>{value}</strong>
 		</div>
 	)
 }

@@ -1,11 +1,19 @@
 .Card {
 	background-color: white;
 	color: black;
-	padding: 0.8rem;
+	padding: 12px;
+	padding-bottom: 32px;
 	margin-inline: 1px;
 	margin-top: 1rem;
 	border-radius: 12px;
-	height: 100%;
+	min-height: 460px;
+	position: relative;
+	-webkit-mask-image: radial-gradient(
+		circle at top,
+		transparent 14px,
+		black 15px
+	);
+	mask-image: radial-gradient(circle at top, transparent 30px, black 31px);
 }
 
 .Header,
@@ -27,8 +35,8 @@
 }
 
 .Primary {
-	span {
-		font-size: 2.2rem;
+	strong {
+		font-size: 2.5rem;
 	}
 }
 
@@ -48,7 +56,11 @@
 		font-size: 0.75rem;
 		font-weight: 600;
 		text-transform: uppercase;
-		color: gray;
+		color: #000000a3;
 		display: block;
+	}
+
+	strong {
+		margin: 0;
 	}
 }

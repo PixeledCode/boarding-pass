@@ -1,16 +1,31 @@
 :root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-family: Rubik, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.5;
 	font-weight: 400;
-
-	color: #213547;
-	background-color: #535050;
 
 	font-synthesis: none;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-text-size-adjust: 100%;
+
+	background: hsla(213, 77%, 14%, 1);
+	background: linear-gradient(
+		90deg,
+		hsla(213, 77%, 14%, 1) 0%,
+		hsla(202, 27%, 45%, 1) 100%
+	);
+	background: -moz-linear-gradient(
+		90deg,
+		hsla(213, 77%, 14%, 1) 0%,
+		hsla(202, 27%, 45%, 1) 100%
+	);
+	background: -webkit-linear-gradient(
+		90deg,
+		hsla(213, 77%, 14%, 1) 0%,
+		hsla(202, 27%, 45%, 1) 100%
+	);
+	filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#08203E", endColorstr="#557C93", GradientType=1 );
 }
 
 a {
