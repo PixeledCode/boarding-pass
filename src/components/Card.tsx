@@ -3,6 +3,7 @@ import styles from './Card.module.scss'
 import { getAirlineName, getAirport, getCodeVal } from '../utils/fetch'
 import { IoIosAirplane } from 'react-icons/io'
 import { MdOutlineAirplaneTicket } from 'react-icons/md'
+import { BsArrow90DegUp } from 'react-icons/bs'
 
 interface CardProps {
 	value: any
@@ -55,8 +56,11 @@ export const Card = ({ value }: CardProps) => {
 				</>
 			) : (
 				<div className={styles.Default}>
+					<div className={styles.Arrow}>
+						<BsArrow90DegUp size={32} />
+					</div>
 					<MdOutlineAirplaneTicket size={128} />
-					<p>Upload image of the barcode in your boarding pass</p>
+					<p>Use the '+' icon on top to upload image of your boarding pass</p>
 				</div>
 			)}
 		</article>

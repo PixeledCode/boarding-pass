@@ -22,8 +22,15 @@
 	justify-content: center;
 	align-items: center;
 	height: 100%;
-
 	text-align: center;
+	position: relative;
+
+	.Arrow {
+		position: absolute;
+		top: 0;
+		right: 12px;
+		transform: scaleX(-1);
+	}
 }
 
 .Header,
