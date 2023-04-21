@@ -41,18 +41,22 @@ export const FileReader = ({ formats, onValueChange }: FileReaderProps) => {
 
 	return (
 		<>
-			<input
-				className="sr-only"
-				type="file"
-				ref={inputRef}
-				name="boaridng-pass"
-				accept="image/png, image/jpeg, image/jpg"
-				onChange={(e: any) => {
-					setFile(e.target.files[0])
-				}}
-			/>
+			<label className="sr-only">
+				<input
+					className="sr-only"
+					type="file"
+					ref={inputRef}
+					name="boaridng-pass"
+					accept="image/png, image/jpeg, image/jpg"
+					onChange={(e: any) => {
+						setFile(e.target.files[0])
+					}}
+				/>
+				<span>Image Upload</span>
+			</label>
 			<button className="button-icon" onClick={() => inputRef.current?.click()}>
 				<FiPlusCircle size={24} />
+				<span className="sr-only">Upload Button</span>
 			</button>
 		</>
 	)

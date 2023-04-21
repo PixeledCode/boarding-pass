@@ -1,6 +1,6 @@
 # Boarding Pass
 
-This application is a web-based boarding pass system built using React and Vite. The purpose of the application is to provide boarding passes for airlines that can easily be accessed by passengers via their mobile devices. This application provides a simple, user-friendly interface for generating boarding passes for passengers.
+This application is a web-based boarding pass system built using React and Vite. The purpose of the application is to provide a simple, user-friendly interface for generating boarding passes for passengers.
 
 ## Installation
 

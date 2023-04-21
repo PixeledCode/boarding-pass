@@ -69,9 +69,18 @@ export const Card = ({ value, update, supported }: CardProps) => {
 						<Box heading="PNR" value={pass.pnr} />
 						<Box heading="Seq No." value={pass.squence} />
 					</div>
-					<div className={styles.Code}>
-						{pass.code && <img src={pass.code} alt="boarding pass barcode" />}
-					</div>
+					{pass.code && (
+						<div className={styles.Code}>
+							{pass.code && (
+								<img
+									width={120}
+									height={120}
+									src={pass.code}
+									alt="boarding pass barcode"
+								/>
+							)}
+						</div>
+					)}
 				</>
 			) : (
 				<div className={styles.Default}>
