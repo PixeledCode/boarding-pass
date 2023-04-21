@@ -1,5 +1,5 @@
 import React from 'react'
-import { fetchFlightDetails, parseBarcode } from '../utils/helpers'
+import { parseBarcode } from '../utils/helpers'
 import { FiPlusCircle } from 'react-icons/fi'
 // import { SymbologyType, createStream } from 'symbology'
 
