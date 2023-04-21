@@ -5,8 +5,9 @@ import {
 	MdOutlineAirplaneTicket,
 	MdOutlineDesktopAccessDisabled,
 } from 'react-icons/md'
-import { getAirlineName, getAirport, getCodeVal } from '../utils/fetch'
+import { getAirlineName, getAirport, getBarCodeImage } from '../utils/fetch'
 import styles from './Card.module.scss'
+import { storeFile } from '../utils/helpers'
 
 interface CardProps {
 	value: any
@@ -19,7 +20,15 @@ export const Card = ({ value, update, supported }: CardProps) => {
 
 	async function getValues() {
 		const obj: any = {}
-		await getCodeVal(pass.rawValue).then((res) => (obj.code = res))
+		await getBarCodeImage(pass.rawValue).then((blob) => {
+			const reader: any = new FileReader()
+			reader.addEventListener('load', () => {
+				obj.code = reader.result
+			})
+			// Read the contents of the specified Blob or File
+			reader.readAsDataURL(blob)
+		})
+		// .then((res) => (obj.code = res))
 		await getAirport(pass.departureCode).then((res) => (obj.departure = res))
 		await getAirport(pass.arrivalCode).then((res) => (obj.arrival = res))
 		await getAirlineName(pass.iata).then((res) => (obj.airline = res.name))
@@ -31,10 +40,10 @@ export const Card = ({ value, update, supported }: CardProps) => {
 	}
 
 	React.useEffect(() => {
-		if (supported && pass) {
+		if (supported && value.length > 0) {
 			if (!pass.code) getValues()
 		}
-	}, [pass, supported])
+	}, [value.length])
 
 	const name = pass ? `${pass.firstName} ${pass.lastName}` : ''
 	return (

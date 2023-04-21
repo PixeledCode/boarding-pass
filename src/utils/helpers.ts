@@ -49,3 +49,13 @@ function convertJulianDate(julian: number) {
 export function uniqueID() {
 	return Math.floor(Math.random() * Date.now())
 }
+
+export function storeFile(blob: Blob) {
+	// Convert blob to base64 string
+	const reader: any = new FileReader()
+	reader.addEventListener('load', () => {
+		return reader.result
+	})
+	// Read the contents of the specified Blob or File
+	reader.readAsDataURL(blob)
+}

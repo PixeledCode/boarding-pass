@@ -1,3 +1,5 @@
+import { storeFile } from './helpers'
+
 export async function getAirport(code: string) {
 	const options = {
 		method: 'GET',
@@ -34,13 +36,16 @@ export async function getAirlineName(code: string) {
 		.catch((err) => console.error(err))
 }
 
-export async function getCodeVal(rawValue: string) {
+export async function getBarCodeImage(rawValue: string) {
 	const symbologyURL = `https://bwipjs-api.metafloor.com/?bcid=azteccode&text=${rawValue}&scale=4`
 	return fetch(symbologyURL)
 		.then((res) => res.blob())
 		.then((myBlob) => {
 			const objectURL = URL.createObjectURL(myBlob)
-			return objectURL
+			storeFile(myBlob)
+			// console.log(myBlob, objectURL)
+
+			return myBlob
 		})
 }
 
