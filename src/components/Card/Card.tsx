@@ -8,6 +8,7 @@ import {
 import { getAirlineName, getAirport, getBarCodeImage } from '../../utils/fetch';
 import styles from './Card.module.scss';
 import { Skeleton } from '../Skeleton';
+import cx from 'classnames';
 
 interface CardProps {
   value: any;
@@ -17,6 +18,7 @@ interface CardProps {
 
 export const Card = ({ value, update, supported }: CardProps) => {
   const pass = value[value.length - 1];
+  const [enlarge, setEnlarge] = React.useState(false);
 
   async function getValues() {
     const obj: any = {};
@@ -48,6 +50,10 @@ export const Card = ({ value, update, supported }: CardProps) => {
   const name = pass ? `${pass.firstName} ${pass.lastName}` : '';
   return (
     <article className={styles.Card}>
+      <div
+        className={cx(styles.Backdrop, enlarge && styles.BackdropShow)}
+        onClick={() => setEnlarge(!enlarge)}
+      />
       <div className={styles.Cut}></div>
       {!supported ? (
         <div className={styles.Default}>
@@ -78,7 +84,10 @@ export const Card = ({ value, update, supported }: CardProps) => {
             <Box heading="PNR" value={pass.pnr} />
             <Box heading="Seq No." value={pass.squence} />
           </div>
-          <div className={styles.Code}>
+          <button
+            className={cx(styles.Code, enlarge && styles.Enlarge)}
+            onClick={() => setEnlarge(!enlarge)}
+          >
             {pass.code ? (
               <img
                 width={120}
@@ -89,7 +98,7 @@ export const Card = ({ value, update, supported }: CardProps) => {
             ) : (
               <Skeleton />
             )}
-          </div>
+          </button>
         </>
       ) : (
         <div className={styles.Default}>
