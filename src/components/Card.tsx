@@ -1,16 +1,20 @@
 import React from 'react'
 import { BsArrow90DegUp } from 'react-icons/bs'
 import { IoIosAirplane } from 'react-icons/io'
-import { MdOutlineAirplaneTicket } from 'react-icons/md'
+import {
+	MdOutlineAirplaneTicket,
+	MdOutlineDesktopAccessDisabled,
+} from 'react-icons/md'
 import { getAirlineName, getAirport, getCodeVal } from '../utils/fetch'
 import styles from './Card.module.scss'
 
 interface CardProps {
 	value: any
 	update: any
+	supported: boolean
 }
 
-export const Card = ({ value, update }: CardProps) => {
+export const Card = ({ value, update, supported }: CardProps) => {
 	const pass = value[value.length - 1]
 
 	async function getValues() {
@@ -27,16 +31,21 @@ export const Card = ({ value, update }: CardProps) => {
 	}
 
 	React.useEffect(() => {
-		if (pass) {
+		if (supported && pass) {
 			if (!pass.code) getValues()
 		}
-	}, [pass])
+	}, [pass, supported])
 
 	const name = pass ? `${pass.firstName} ${pass.lastName}` : ''
 	return (
 		<article className={styles.Card}>
 			<div className={styles.Cut}></div>
-			{pass ? (
+			{!supported ? (
+				<div className={styles.Default}>
+					<MdOutlineDesktopAccessDisabled size={128} />
+					<p>Shit! Barcode Readeer API is not supported in your browser.</p>
+				</div>
+			) : pass ? (
 				<>
 					<header className={styles.Header}>
 						<h2>{pass.airline || 'Airline'}</h2>

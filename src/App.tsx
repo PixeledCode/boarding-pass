@@ -30,7 +30,11 @@ function App() {
 				)}
 			</header>
 
-			<Card value={store.passes} update={store.updatePass} />
+			<Card
+				value={store.passes}
+				update={store.updatePass}
+				supported={supported}
+			/>
 		</div>
 	)
 }
