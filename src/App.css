@@ -11,7 +11,9 @@
 	margin-inline: auto;
 	background-color: #535050;
 	color: white;
-	padding-bottom: 2rem;
+
+	display: flex;
+	flex-direction: column;
 }
 
 .header {
@@ -26,14 +28,4 @@
 
 .button-icon {
 	line-height: 0;
-}
-
-.Card {
-	background-color: white;
-	color: black;
-	padding: 0.8rem;
-	margin-inline: 1px;
-	margin-top: 1rem;
-	border-radius: 12px;
-	min-height: 240px;
 }

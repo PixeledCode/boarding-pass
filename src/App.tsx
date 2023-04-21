@@ -8,7 +8,6 @@ const formats = ['aztec', 'data_matrix', 'pdf417']
 function App() {
 	const [supported, setSupported] = useState(false)
 	const [value, setValue] = React.useState<any>()
-	const [image, setImage] = React.useState<any>()
 
 	React.useEffect(() => {
 		if ('BarcodeDetector' in window) {
@@ -20,22 +19,15 @@ function App() {
 		}
 		setSupported(false)
 	}, [])
-	console.log(supported)
 
 	return (
 		<div className="App">
 			<header className="header">
 				<h1>Boarding Pass</h1>
-				{supported && (
-					<FileReader
-						onValueChange={setValue}
-						setImage={setImage}
-						formats={formats}
-					/>
-				)}
+				{supported && <FileReader onValueChange={setValue} formats={formats} />}
 			</header>
 
-			{<Card value={value} image={image} />}
+			<Card value={value} />
 		</div>
 	)
 }

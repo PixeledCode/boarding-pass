@@ -1,0 +1,54 @@
+.Card {
+	background-color: white;
+	color: black;
+	padding: 0.8rem;
+	margin-inline: 1px;
+	margin-top: 1rem;
+	border-radius: 12px;
+	height: 100%;
+}
+
+.Header,
+.Primary,
+.Auxiliary,
+.Secondary {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.Header {
+	h2 {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.Primary {
+	span {
+		font-size: 2.2rem;
+	}
+}
+
+.Code {
+	display: flex;
+	justify-content: center;
+	margin-top: 4rem;
+
+	img {
+		width: 120px;
+		aspect-ratio: 1/1;
+	}
+}
+
+.Box {
+	> span:first-of-type {
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: gray;
+		display: block;
+	}
+}

@@ -6,14 +6,9 @@ import { FiPlusCircle } from 'react-icons/fi'
 interface FileReaderProps {
 	formats: string[]
 	onValueChange: any
-	setImage: any
 }
 
-export const FileReader = ({
-	formats,
-	onValueChange,
-	setImage,
-}: FileReaderProps) => {
+export const FileReader = ({ formats, onValueChange }: FileReaderProps) => {
 	const [file, setFile] = React.useState()
 	const [value, setValue] = React.useState<any>()
 	const inputRef = React.useRef<HTMLInputElement>(null)
@@ -26,15 +21,7 @@ export const FileReader = ({
 			try {
 				createImageBitmap(file)
 					.then((img) => bd.detect(img))
-					.then(async (resp) => {
-						const symbologyURL = `https://bwipjs-api.metafloor.com/?bcid=azteccode&text=${resp[0].rawValue}&scale=4`
-						await fetch(symbologyURL)
-							.then((res) => res.blob())
-							.then((myBlob) => {
-								const objectURL = URL.createObjectURL(myBlob)
-								setImage(objectURL)
-							})
-
+					.then((resp) => {
 						const parsed = parseBarcode(resp[0].rawValue)
 						setValue(parsed)
 					})

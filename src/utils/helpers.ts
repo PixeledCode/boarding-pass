@@ -14,6 +14,8 @@ export const parseBarcode = (barcode: string) => {
 	const splitStr = barcode.split(' ').filter(Boolean)
 	console.log(splitStr)
 
+	obj.rawValue = barcode
+
 	// Get the name of the passenger
 	const name = splitStr[0].replace('M1', '').split('/')
 	obj.firstName = name[1]
@@ -28,6 +30,8 @@ export const parseBarcode = (barcode: string) => {
 
 	// Get the carrier details
 	obj.flightCode = splitStr[2].slice(6, 8) + parseInt(splitStr[3])
+	obj.departure = splitStr[2].slice(0, 3)
+	obj.arrival = splitStr[2].slice(3, 6)
 
 	return obj
 }
@@ -46,5 +50,11 @@ function convertJulianDate(julian: number) {
 	let yearFirstDay = Math.floor(timeStamp / 86400000)
 	let date = (yearFirstDay + (julian - 1)) * 86400000
 
-	return new Date(date).toDateString()
+	return new Date(date)
+		.toUTCString()
+		.split(',')[1]
+		?.trim()
+		.split(' ')
+		.slice(0, 3)
+		.join(' ') // eg: 1 Apr 2023
 }
