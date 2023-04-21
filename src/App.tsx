@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import './App.css'
 import { Card, FileReader } from './components'
+import { usePassesStore } from './config'
 import { checkIfFormatIsSupported } from './utils/helpers'
 
-const formats = ['aztec', 'data_matrix', 'pdf417']
+const formats = ['aztec', 'data_matrix', 'pdf417', 'qr_code']
 
 function App() {
 	const [supported, setSupported] = useState(false)
-	const [value, setValue] = React.useState<any>()
+	const store = usePassesStore()
 
 	React.useEffect(() => {
 		if ('BarcodeDetector' in window) {
@@ -24,10 +25,12 @@ function App() {
 		<div className="App">
 			<header className="header">
 				<h1>Passes</h1>
-				{supported && <FileReader onValueChange={setValue} formats={formats} />}
+				{supported && (
+					<FileReader onValueChange={store.addPass} formats={formats} />
+				)}
 			</header>
 
-			<Card value={value} />
+			<Card value={store.passes} update={store.updatePass} />
 		</div>
 	)
 }

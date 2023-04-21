@@ -1,57 +1,67 @@
 import React from 'react'
-import styles from './Card.module.scss'
-import { getAirlineName, getAirport, getCodeVal } from '../utils/fetch'
+import { BsArrow90DegUp } from 'react-icons/bs'
 import { IoIosAirplane } from 'react-icons/io'
 import { MdOutlineAirplaneTicket } from 'react-icons/md'
-import { BsArrow90DegUp } from 'react-icons/bs'
+import { getAirlineName, getAirport, getCodeVal } from '../utils/fetch'
+import styles from './Card.module.scss'
 
 interface CardProps {
 	value: any
+	update: any
 }
 
-export const Card = ({ value }: CardProps) => {
-	const [code, setCode] = React.useState<any>()
-	const [dep, setDep] = React.useState<any>('Departure')
-	const [arr, setArr] = React.useState<any>('Arrival')
-	const [airline, setAirline] = React.useState<any>('Airline')
+export const Card = ({ value, update }: CardProps) => {
+	const pass = value[value.length - 1]
+
+	async function getValues() {
+		const obj: any = {}
+		await getCodeVal(pass.rawValue).then((res) => (obj.code = res))
+		await getAirport(pass.departureCode).then((res) => (obj.departure = res))
+		await getAirport(pass.arrivalCode).then((res) => (obj.arrival = res))
+		await getAirlineName(pass.iata).then((res) => (obj.airline = res.name))
+
+		update({
+			...pass,
+			...obj,
+		})
+	}
 
 	React.useEffect(() => {
-		if (value) {
-			getCodeVal(value.rawValue).then((res) => setCode(res))
-			getAirport(value.departure).then((res) => setDep(res))
-			getAirport(value.arrival).then((res) => setArr(res))
-			getAirlineName(value.iata).then((res) => setAirline(res))
+		if (pass) {
+			if (!pass.code) getValues()
 		}
-	}, [value])
+	}, [pass])
 
-	const name = value ? `${value.firstName} ${value.lastName}` : ''
-
+	const name = pass ? `${pass.firstName} ${pass.lastName}` : ''
 	return (
 		<article className={styles.Card}>
 			<div className={styles.Cut}></div>
-			{value ? (
+			{pass ? (
 				<>
 					<header className={styles.Header}>
-						<h2>{airline.name || 'Airline'}</h2>
-						<Box heading="Seat" value={value.seat} />
+						<h2>{pass.airline || 'Airline'}</h2>
+						<Box heading="Seat" value={pass.seat} />
 					</header>
 					<div className={styles.Primary}>
-						<Box heading={dep} value={value.departure} />
+						<Box
+							heading={pass.departure || 'Departure'}
+							value={pass.departureCode}
+						/>
 						<IoIosAirplane size={48} />
-						<Box heading={arr} value={value.arrival} />
+						<Box heading={pass.arrival || 'Arrival'} value={pass.arrivalCode} />
 					</div>
 					<div className={styles.Auxiliary}>
-						<Box heading="Flight" value={value.flightCode} />
-						<Box heading="Date" value={value.date} />
-						<Box heading="Class" value={value.cabin} />
+						<Box heading="Flight" value={pass.flightCode} />
+						<Box heading="Date" value={pass.date} />
+						<Box heading="Class" value={pass.cabin} />
 					</div>
 					<div className={styles.Secondary}>
 						<Box heading="Name" value={name} />
-						<Box heading="PNR" value={value.pnr} />
-						<Box heading="Seq No." value={value.squence} />
+						<Box heading="PNR" value={pass.pnr} />
+						<Box heading="Seq No." value={pass.squence} />
 					</div>
 					<div className={styles.Code}>
-						{code && <img src={code} alt="boarding pass barcode" />}
+						{pass.code && <img src={pass.code} alt="boarding pass barcode" />}
 					</div>
 				</>
 			) : (

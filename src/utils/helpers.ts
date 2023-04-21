@@ -26,8 +26,8 @@ export const parseBarcode = (barcode: string) => {
 	// Get the carrier details
 	obj.iata = splitStr[2].slice(6, 8)
 	obj.flightCode = obj.iata + parseInt(splitStr[3])
-	obj.departure = splitStr[2].slice(0, 3)
-	obj.arrival = splitStr[2].slice(3, 6)
+	obj.departureCode = splitStr[2].slice(0, 3)
+	obj.arrivalCode = splitStr[2].slice(3, 6)
 
 	return obj
 }
@@ -44,4 +44,8 @@ function convertJulianDate(julian: number) {
 		.split(' ')
 		.slice(0, 3)
 		.join(' ') // eg: 1 Apr 2023
+}
+
+export function uniqueID() {
+	return Math.floor(Math.random() * Date.now())
 }
