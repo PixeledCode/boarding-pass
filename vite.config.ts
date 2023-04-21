@@ -17,7 +17,7 @@ export default defineConfig({
 				background_color: '#43677f',
 				display: 'standalone',
 				scope: '/',
-				start_url: '/',
+				start_url: '/index.html',
 				short_name: 'Passes',
 				description:
 					'Simple, user-friendly interface for generating boarding passes for passengers',
