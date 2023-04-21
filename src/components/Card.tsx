@@ -7,7 +7,6 @@ import {
 } from 'react-icons/md'
 import { getAirlineName, getAirport, getBarCodeImage } from '../utils/fetch'
 import styles from './Card.module.scss'
-import { storeFile } from '../utils/helpers'
 
 interface CardProps {
 	value: any

@@ -1,5 +1,3 @@
-import { storeFile } from './helpers'
-
 export async function getAirport(code: string) {
 	const options = {
 		method: 'GET',
@@ -41,10 +39,6 @@ export async function getBarCodeImage(rawValue: string) {
 	return fetch(symbologyURL)
 		.then((res) => res.blob())
 		.then((myBlob) => {
-			const objectURL = URL.createObjectURL(myBlob)
-			storeFile(myBlob)
-			// console.log(myBlob, objectURL)
-
 			return myBlob
 		})
 }

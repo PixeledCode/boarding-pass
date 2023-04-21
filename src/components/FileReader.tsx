@@ -1,6 +1,6 @@
 import React from 'react'
-import { parseBarcode } from '../utils/helpers'
 import { FiPlusCircle } from 'react-icons/fi'
+import { parseBarcode } from '../utils/helpers'
 
 interface FileReaderProps {
 	formats: string[]
