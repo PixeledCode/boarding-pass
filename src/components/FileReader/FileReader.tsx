@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiPlusCircle } from 'react-icons/fi';
-import { parseBarcode } from '../utils/helpers';
+import { parseBarcode } from '../../utils/helpers';
+import styles from './FileReader.module.scss';
 
 interface FileReaderProps {
   formats: string[];
@@ -54,7 +55,10 @@ export const FileReader = ({ formats, onValueChange }: FileReaderProps) => {
         />
         <span>Image Upload</span>
       </label>
-      <button className="button-icon" onClick={() => inputRef.current?.click()}>
+      <button
+        className={styles.Button}
+        onClick={() => inputRef.current?.click()}
+      >
         <FiPlusCircle size={24} />
         <span className="sr-only">Upload Button</span>
       </button>

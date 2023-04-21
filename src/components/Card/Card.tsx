@@ -5,7 +5,7 @@ import {
   MdOutlineAirplaneTicket,
   MdOutlineDesktopAccessDisabled,
 } from 'react-icons/md';
-import { getAirlineName, getAirport, getBarCodeImage } from '../utils/fetch';
+import { getAirlineName, getAirport, getBarCodeImage } from '../../utils/fetch';
 import styles from './Card.module.scss';
 
 interface CardProps {

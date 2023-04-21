@@ -1,8 +1,9 @@
+import { usePassesStore } from '../../config';
 import React, { useState } from 'react';
-import './App.css';
-import { Card, FileReader } from './components';
-import { usePassesStore } from './config';
-import { checkIfFormatIsSupported } from './utils/helpers';
+import { checkIfFormatIsSupported } from '../../utils/helpers';
+import { Card } from '../Card';
+import { FileReader } from '../FileReader';
+import styles from './App.module.scss';
 
 const formats = ['aztec', 'data_matrix', 'pdf417', 'qr_code'];
 
@@ -22,8 +23,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header className="header">
+    <div className={styles.App}>
+      <header className={styles.Header}>
         <h1>Passes</h1>
         {supported && (
           <FileReader onValueChange={store.addPass} formats={formats} />
@@ -39,4 +40,4 @@ function App() {
   );
 }
 
-export default App;
+export { App };

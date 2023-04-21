@@ -25,7 +25,6 @@
     hsla(213, 77%, 14%, 1) 0%,
     hsla(202, 27%, 45%, 1) 100%
   );
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#08203E", endColorstr="#557C93", GradientType=1 );
 }
 
 a {
@@ -52,10 +51,8 @@ h1 {
 
 button {
   all: unset;
-  padding: 4px;
   font-family: inherit;
   cursor: pointer;
-  transition: border-color 0.25s;
 }
 
 .sr-only:not(:where(:focus, :active, :focus-within)) {
