@@ -37,3 +37,8 @@ When contributing to this repository, please first discuss the change you wish t
 ## License
 
 This application is licensed under the MIT License. Feel free to use and modify the code for personal or commercial use.
+
+## Readings
+
+- [The Shape Detection API](https://developer.chrome.com/articles/shape-detection/)
+- [What’s contained in a boarding pass barcode?](https://se.au/notes/whats-contained-in-a-boarding-pass-barcode/)

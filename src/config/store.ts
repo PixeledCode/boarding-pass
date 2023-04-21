@@ -1,7 +1,7 @@
 import { produce } from 'immer';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
-import { uniqueID } from './utils/helpers';
+import { uniqueID } from '../utils/helpers';
 
 type PassState = {
   passes: string[];
