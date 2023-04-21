@@ -7,6 +7,7 @@ import {
 } from 'react-icons/md';
 import { getAirlineName, getAirport, getBarCodeImage } from '../../utils/fetch';
 import styles from './Card.module.scss';
+import { Skeleton } from '../Skeleton';
 
 interface CardProps {
   value: any;
@@ -77,18 +78,18 @@ export const Card = ({ value, update, supported }: CardProps) => {
             <Box heading="PNR" value={pass.pnr} />
             <Box heading="Seq No." value={pass.squence} />
           </div>
-          {pass.code && (
-            <div className={styles.Code}>
-              {pass.code && (
-                <img
-                  width={120}
-                  height={120}
-                  src={pass.code}
-                  alt="boarding pass barcode"
-                />
-              )}
-            </div>
-          )}
+          <div className={styles.Code}>
+            {pass.code ? (
+              <img
+                width={120}
+                height={120}
+                src={pass.code}
+                alt="boarding pass barcode"
+              />
+            ) : (
+              <Skeleton />
+            )}
+          </div>
         </>
       ) : (
         <div className={styles.Default}>

@@ -1,0 +1,17 @@
+@keyframes move {
+  to {
+    background-position: left;
+  }
+}
+
+.Skeleton {
+  width: 120px;
+  height: 120px;
+  -webkit-mask: linear-gradient(#000 0 0) top / 100%;
+  mask: linear-gradient(#000 0 0) top / 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  background: linear-gradient(90deg, #fff 40%, #ccca, #fff 60%) right/300% 100%;
+  animation: move 2s linear infinite;
+}
