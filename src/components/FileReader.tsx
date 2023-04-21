@@ -1,7 +1,6 @@
 import React from 'react'
 import { parseBarcode } from '../utils/helpers'
 import { FiPlusCircle } from 'react-icons/fi'
-// import { SymbologyType, createStream } from 'symbology'
 
 interface FileReaderProps {
 	formats: string[]

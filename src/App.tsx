@@ -23,7 +23,7 @@ function App() {
 	return (
 		<div className="App">
 			<header className="header">
-				<h1>Boarding Pass</h1>
+				<h1>Passes</h1>
 				{supported && <FileReader onValueChange={setValue} formats={formats} />}
 			</header>
 

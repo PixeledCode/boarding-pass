@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Card.module.scss'
 import { getAirlineName, getAirport, getCodeVal } from '../utils/fetch'
 import { IoIosAirplane } from 'react-icons/io'
+import { MdOutlineAirplaneTicket } from 'react-icons/md'
 
 interface CardProps {
 	value: any
@@ -27,7 +28,7 @@ export const Card = ({ value }: CardProps) => {
 	return (
 		<article className={styles.Card}>
 			<div className={styles.Cut}></div>
-			{value && (
+			{value ? (
 				<>
 					<header className={styles.Header}>
 						<h2>{airline.name || 'Airline'}</h2>
@@ -52,6 +53,11 @@ export const Card = ({ value }: CardProps) => {
 						{code && <img src={code} alt="boarding pass barcode" />}
 					</div>
 				</>
+			) : (
+				<div className={styles.Default}>
+					<MdOutlineAirplaneTicket size={128} />
+					<p>Upload image of the barcode in your boarding pass</p>
+				</div>
 			)}
 		</article>
 	)

@@ -16,6 +16,16 @@
 	mask-image: radial-gradient(circle at top, transparent 30px, black 31px);
 }
 
+.Default {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+
+	text-align: center;
+}
+
 .Header,
 .Primary,
 .Auxiliary,
