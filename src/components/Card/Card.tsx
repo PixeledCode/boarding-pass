@@ -58,7 +58,8 @@ export const Card = ({ value, update, supported }: CardProps) => {
       {!supported ? (
         <div className={styles.Default}>
           <MdOutlineDesktopAccessDisabled size={128} />
-          <p>Shit! Barcode Readeer API is not supported in your browser.</p>
+          <p>Oops!</p> 
+          <p>Barcode Reader API is not supported in your browser.</p>
         </div>
       ) : pass ? (
         <>
