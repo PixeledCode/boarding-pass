@@ -1,4 +1,4 @@
-# Boarding Pass
+# Passes
 
 The purpose of the application is to provide a simple, user-friendly interface for generating boarding passes for passengers using only web technologies.
 
@@ -19,10 +19,10 @@ The application allows passengers to use image of the boarding pass and save the
 
 Some of the key features of the application include:
 
-- User-friendly interface for saving boarding passes
+- PWA support for offline use
 - Relies on native Barcode Scanner API for scanning boarding passes
 - Boarding pass details are saved in the browser's local storage
-- PWA support for offline use
+- User-friendly interface for saving boarding passes
 
 ## Contributing
 
